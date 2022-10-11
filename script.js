@@ -70,11 +70,14 @@ let UIController=(()=>{
             return{
                 Type:document.querySelector(".addType").value,
                 Desc:document.querySelector(".desc").value,
-                Value:document.querySelector(".value").value
+                Value:parseFloat(document.querySelector(".value").value)
             }
         },
         budCal:(type,Desc,Value)=>{
-
+            if(Desc=="" || isNaN(Value)){
+                alert("Fields should not be empty")
+            }
+            else{
             if(type==="inc"){
             var incomeBody=`
             <div class="incomeBody-body">
@@ -103,6 +106,7 @@ let UIController=(()=>{
             const Demo = document.querySelector(".redBody");
             Demo.insertAdjacentHTML('afterbegin',incomeBody)
         }
+    }
         },
 
         clearInput:()=>{
